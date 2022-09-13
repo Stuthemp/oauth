@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * todo Document type MainController
+ * just test
  */
 @Controller
 public class MainController {

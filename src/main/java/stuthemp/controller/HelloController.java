@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * todo Document type HelloConroller
+ * just test
  */
 @RestController
 public class HelloController {

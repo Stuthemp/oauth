@@ -1,23 +1,18 @@
 package stuthemp.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.web.SecurityFilterChain;
 
-import java.util.Arrays;
-
 /**
- * todo Document type ProjectConfig
+ * Main config
  */
 @Configuration
 public class ProjectConfig{
@@ -33,9 +28,13 @@ public class ProjectConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.oauth2Login();
 
+        http.csrf().disable();
+
         http.authorizeRequests()
+            .mvcMatchers(HttpMethod.GET,"/hello")
+            .authenticated()
             .anyRequest()
-            .authenticated();
+            .permitAll();
 
         return http.build();
     }
@@ -48,7 +47,6 @@ public class ProjectConfig{
             .clientSecret(clientSecret)
             .build();
     }
-
 
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
