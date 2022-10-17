@@ -1,5 +1,6 @@
 package stuthemp.integration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.dsl.IntegrationFlow;
@@ -16,6 +17,12 @@ import java.nio.charset.Charset;
 @Configuration
 public class AlgofanPublishEmailIntegrationConfig {
 
+    @Value("${algofan.email.password}")
+    private String password;
+
+    @Value("${algofan.email.username}")
+    private String address;
+
     @Bean
     public IntegrationFlow algofanEmailFlow(
         EmailQuestionTransformer transformer,
@@ -24,9 +31,9 @@ public class AlgofanPublishEmailIntegrationConfig {
         return IntegrationFlows
             .from(Mail.imapInboundAdapter(
                         "imaps://"
-                            + URLEncoder.encode("qwegras@yandex.ru", Charset.defaultCharset())
+                            + URLEncoder.encode(address, Charset.defaultCharset())
                             + ":"
-                            + URLEncoder.encode("mfoacgcmxzhzwvcc", Charset.defaultCharset())
+                            + URLEncoder.encode(password, Charset.defaultCharset())
                             + "@imap.yandex.ru:993/inbox"
                     ).shouldDeleteMessages(true)
                     .javaMailProperties(p -> {
