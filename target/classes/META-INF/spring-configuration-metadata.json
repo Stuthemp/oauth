@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "algofan.email",
+      "type": "stuthemp.integration.EmailProperties",
+      "sourceType": "stuthemp.integration.EmailProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "algofan.email.host",
+      "type": "java.lang.String",
+      "sourceType": "stuthemp.integration.EmailProperties"
+    },
+    {
+      "name": "algofan.email.mailbox",
+      "type": "java.lang.String",
+      "sourceType": "stuthemp.integration.EmailProperties"
+    },
+    {
+      "name": "algofan.email.password",
+      "type": "java.lang.String",
+      "sourceType": "stuthemp.integration.EmailProperties"
+    },
+    {
+      "name": "algofan.email.poll-rate",
+      "type": "java.lang.Long",
+      "sourceType": "stuthemp.integration.EmailProperties"
+    },
+    {
+      "name": "algofan.email.username",
+      "type": "java.lang.String",
+      "sourceType": "stuthemp.integration.EmailProperties"
+    }
+  ],
+  "hints": []
+}
